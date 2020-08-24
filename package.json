@@ -1,0 +1,23 @@
+{
+  "name": "clickup-task",
+  "version": "1.0.0",
+  "description": "add clickup task app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ayumuu/add-clickup-task.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ayumuu/add-clickup-task/issues"
+  },
+  "homepage": "https://github.com/Ayumuu/add-clickup-task#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  }
+}

@@ -1,0 +1,10 @@
+version: '3'
+services:
+  node:
+    image: node:latest
+    tty: true
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app
+    ports: 
+      - 3010:3010
