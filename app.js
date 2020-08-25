@@ -11,10 +11,28 @@ var port = process.env.PORT || 3010; // port番号を指定
 
 
 // GET http://localhost:3000/api/v1/
-app.get('/api/v1/',function(req, res){
-    res.json({
-        message:"Hello,world"
+app.post('/api/v1/',function(req, res){
+
+    const axiosBase = require('axios');
+    const axios = axiosBase.create({
+        baseURL: 'https://api.clickup.com/api/v2', // バックエンドB のURL:port を指定する
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest',
+            'Authorization': 'pk_3819517_DJ2QDHESULEVT6WT1MHNQ25DWPMTTUUW'
+        },
+        responseType: 'json'
     });
+
+    axios.post('/list/14329023/task', {
+        "name": "タスクだよ",
+        "description": "New Task Content"
+    })
+        .then(() => {
+            res.json({
+                message:"created task."
+            });
+        });
 });
 
 //サーバ起動
