@@ -11,7 +11,7 @@ var port = process.env.PORT || 3010; // port番号を指定
 
 
 // GET http://localhost:3000/api/v1/
-app.post('/api/v1/',function(req, res){
+app.post('/api/v1/list/:listId',function(req, res){
 
     const axiosBase = require('axios');
     const axios = axiosBase.create({
@@ -26,9 +26,10 @@ app.post('/api/v1/',function(req, res){
     res.json({
         'action': req.body.action,
         'issue_body': req.body.issue.body,
+        'list id': req.params.listId
     });
 
-    axios.post('/list/14145734/task', {
+    axios.post(`/list/${req.params.listId}/task`, {
         "name":  req.body.issue.title,
         "description": req.body.issue.url
     })
