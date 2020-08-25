@@ -23,16 +23,20 @@ app.post('/api/v1/',function(req, res){
         },
         responseType: 'json'
     });
+    res.json({
+        'action': req.body.action,
+        'issue_body': req.body.issue.body,
+    });
 
     axios.post('/list/14329023/task', {
-        "name": "タスクだよ",
-        "description": "New Task Content"
+        "name":  req.body.issue.title,
+        "description": req.body.issue.url
     })
-        .then(() => {
-            res.json({
-                message:"created task."
-            });
+    .then(() => {
+        res.json({
+            message:"created task."
         });
+    });
 });
 
 //サーバ起動
