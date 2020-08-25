@@ -28,7 +28,7 @@ app.post('/api/v1/',function(req, res){
         'issue_body': req.body.issue.body,
     });
 
-    axios.post('/list/14329023/task', {
+    axios.post('/list/14145734/task', {
         "name":  req.body.issue.title,
         "description": req.body.issue.url
     })
