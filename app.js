@@ -19,7 +19,7 @@ app.post('/api/v1/list/:listId',function(req, res){
         headers: {
             'Content-Type': 'application/json',
             'X-Requested-With': 'XMLHttpRequest',
-            'Authorization': 'pk_3819517_DJ2QDHESULEVT6WT1MHNQ25DWPMTTUUW'
+            'Authorization': 'pk_3849513_1KSEPE427PWTPAWPYF0O47I1F8IMCJAQ'
         },
         responseType: 'json'
     });
@@ -28,16 +28,17 @@ app.post('/api/v1/list/:listId',function(req, res){
         'issue_body': req.body.issue.body,
         'list id': req.params.listId
     });
-
-    axios.post(`/list/${req.params.listId}/task`, {
-        "name":  req.body.issue.title,
-        "description": req.body.issue.url
-    })
-    .then(() => {
-        res.json({
-            message:"created task."
-        });
-    });
+    if (req.body.action === 'opened') {
+        axios.post(`/list/${req.params.listId}/task`, {
+            "name":  req.body.issue.title,
+            "description": req.body.issue.url
+        })
+            .then(() => {
+                res.json({
+                    message:"created task."
+                });
+            });
+    }
 });
 
 //サーバ起動
