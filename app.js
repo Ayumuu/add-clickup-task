@@ -31,7 +31,7 @@ app.post('/api/v1/list/:listId',function(req, res){
     if (req.body.action === 'opened') {
         axios.post(`/list/${req.params.listId}/task`, {
             "name":  req.body.issue.title,
-            "description": req.body.issue.url
+            "description": req.body.issue.html_url
         })
             .then(() => {
                 res.json({
